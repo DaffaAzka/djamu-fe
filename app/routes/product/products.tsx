@@ -1,17 +1,9 @@
 import { useParams, Link } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Card from "../../components/ui/card";
 import { getProductsByCategory, dummyJamu } from "../../utilities/dummy";
-
-interface Product {
-  id: number;
-  category_id: string;
-  title: string;
-  picture_url: string;
-  is_popular: number;
-  created_at: string;
-  updated_at: string;
-}
+import { categoryAPI, productAPI } from "~/utilities/api";
+import type { Product } from "~/utilities/type";
 
 export function meta({ params }: any) {
   return [
@@ -27,22 +19,27 @@ export default function ProductsByCategory({ params }: any) {
   const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    // Simulasi fetch data dengan delay
-    const timer = setTimeout(() => {
-      const categoryData = dummyJamu.data.find(
-        (cat) => cat.id === parseInt(categoryId),
-      );
+    const fetchData = async () => {
+      const data = await productAPI.getByCategoryId(categoryId);
+      return data;
+    };
 
-      if (categoryData) {
-        setCategoryName(categoryData.name);
-      }
-
-      const data = getProductsByCategory(categoryId);
+    fetchData().then((data) => {
       setProducts(data);
+      console.log(data);
       setIsLoading(false);
-    }, 500);
+    });
+  }, [categoryId]);
 
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await categoryAPI.getById(categoryId);
+      return data;
+    };
+
+    fetchData().then((data) => {
+      setCategoryName(data.name);
+    });
   }, [categoryId]);
 
   return (
@@ -82,13 +79,14 @@ export default function ProductsByCategory({ params }: any) {
                   className="group grow">
                   <Card
                     title={product.title}
-                    image={product.picture_url}
+                    image={product.picture_url ?? "/assets/jamu-assets2.jpg"}
                     className="group-hover:shadow-xl transition-all duration-300 cursor-pointer ">
-                    {product.is_popular === 1 && (
-                      <div className="inline-block px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full mb-2">
-                        Popular
-                      </div>
-                    )}
+                    <div className="flex flex-col gap-2">
+                      <p>Rp {product.value?.toLocaleString("id-ID") ?? 0}</p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {product.description}
+                      </p>
+                    </div>
                   </Card>
                 </Link>
               ))}

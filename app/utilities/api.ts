@@ -175,7 +175,7 @@ export const productAPI = {
    * const products = await productAPI.getAll();
    */
   getAll: async (): Promise<Product[]> => {
-    const response = await api.get<ApiResponse<Product[]>>("/product");
+    const response = await api.get<ApiResponse<Product[]>>("/products");
     return response.data.data || [];
   },
 
@@ -188,7 +188,7 @@ export const productAPI = {
    * const product = await productAPI.getById(1);
    */
   getById: async (id: number): Promise<Product> => {
-    const response = await api.get<ApiResponse<Product>>(`/product/${id}`);
+    const response = await api.get<ApiResponse<Product>>(`/products/${id}`);
     return response.data.data!;
   },
 
@@ -200,10 +200,17 @@ export const productAPI = {
    * @example
    * const categoryProducts = await productAPI.getByCategory(1);
    */
-  getByCategory: async (categoryId: string | number): Promise<Product[]> => {
-    const response = await api.get<ApiResponse<Product[]>>("/product", {
-      params: { category_id: categoryId },
-    });
+  // getByCategory: async (categoryId: string | number): Promise<Product[]> => {
+  //   const response = await api.get<ApiResponse<Product[]>>("/product", {
+  //     params: { category_id: categoryId },
+  //   });
+  //   return response.data.data || [];
+  // },
+
+  getByCategoryId: async (categoryId: string | number): Promise<Product[]> => {
+    const response = await api.get<ApiResponse<Product[]>>(
+      `/products/getbyCategoryID/${categoryId}`,
+    );
     return response.data.data || [];
   },
 

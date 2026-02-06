@@ -2,16 +2,8 @@ import { useParams, Link } from "react-router";
 import { useState, useEffect } from "react";
 import Card from "../../components/ui/card";
 import { getProductById, getProductsByCategory } from "../../utilities/dummy";
-
-interface Product {
-  id: number;
-  category_id: string;
-  title: string;
-  picture_url: string;
-  is_popular: number;
-  created_at: string;
-  updated_at: string;
-}
+import { productAPI } from "~/utilities/api";
+import type { Product } from "~/utilities/type";
 
 export function meta({ params }: any) {
   return [
@@ -30,7 +22,19 @@ export default function ProductDetail({ params }: any) {
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
-        const productData = getProductById(parseInt(id));
+        const productData = async () => {
+          const data = await productAPI.getById(id);
+          return data;
+        };
+
+        const productsData = async () => {
+          const data = await productAPI.getAll();
+          return data;
+        };
+
+        productData().then((data) => {
+          setProduct(data);
+        });
 
         if (!productData) {
           setError("Produk tidak ditemukan");
@@ -38,13 +42,14 @@ export default function ProductDetail({ params }: any) {
           return;
         }
 
-        setProduct(productData);
+        productsData().then((data) => {
+          const related = data
+            .filter((p) => p.category_id === product?.category_id)
+            .slice(0, 4);
+          setRelatedProducts(related);
+        });
 
-        const related = getProductsByCategory(productData.category_id)
-          .filter((p) => p.id !== productData.id)
-          .slice(0, 3);
-
-        setRelatedProducts(related);
+        setLoading(false);
         setError("");
       } catch (err) {
         setError("Gagal memuat data produk");
@@ -106,55 +111,42 @@ export default function ProductDetail({ params }: any) {
             {/* Product Image */}
             <div>
               <img
-                src={product.picture_url}
+                src={product.picture_url ?? "/assets/jamu-assets2.jpg"}
                 alt={product.title}
                 className="w-full h-96 object-cover rounded-lg"
               />
-              {product.is_popular === 1 && (
-                <div className="mt-4 inline-block px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg">
-                  🔥 Produk Popular
-                </div>
-              )}
             </div>
 
             {/* Product Info */}
+
             <div className="flex flex-col justify-center">
+              {product.is_popular == 1 && (
+                <div className="mb-2">
+                  <div className="mt-4 inline-block px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg">
+                    🔥 Produk Popular
+                  </div>
+                </div>
+              )}
               <h1 className="text-4xl font-bold text-gray-900 mb-4 font-yusei">
                 {product.title}
               </h1>
 
               <div className="mb-6 pb-6 border-b">
                 <p className="text-gray-600 text-base mb-4">
-                  Produk berkualitas tinggi yang telah dipilih khusus untuk
-                  memenuhi kebutuhan Anda.
+                  {product.description ??
+                    "Produk berkualitas tinggi yang telah dipilih khusus untu memenuhi kebutuhan Anda."}
                 </p>
                 <div className="flex gap-4">
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide">
-                      Kategori
-                    </p>
-                    <p className="text-lg font-semibold text-gray-900">
-                      ID: {product.category_id}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide">
-                      Ditambahkan
-                    </p>
-                    <p className="text-lg font-semibold text-gray-900">
-                      {new Date(product.created_at).toLocaleDateString("id-ID")}
-                    </p>
+                    <p>Rp. {product.value?.toLocaleString("id-ID") ?? 0}</p>
                   </div>
                 </div>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex gap-4">
-                <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
-                  Beli Sekarang
-                </button>
-                <button className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-3 px-6 rounded-lg transition">
-                  Tambah ke Wishlist
+                <button className="flex-1 bg-[#2D1C0F] text-white font-semibold py-3 px-6 rounded-lg transition">
+                  Hubungi Kami
                 </button>
               </div>
             </div>
@@ -181,9 +173,11 @@ export default function ProductDetail({ params }: any) {
                   className="group">
                   <Card
                     title={relatedProduct.title}
-                    image={relatedProduct.picture_url}
+                    image={
+                      relatedProduct.picture_url ?? "/assets/jamu-assets2.jpg"
+                    }
                     className="group-hover:shadow-xl transition-all duration-300 cursor-pointer">
-                    {relatedProduct.is_popular === 1 && (
+                    {relatedProduct.is_popular == 1 && (
                       <div className="inline-block px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">
                         Popular
                       </div>

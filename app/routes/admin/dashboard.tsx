@@ -13,7 +13,6 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check authentication
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       navigate("/login");
