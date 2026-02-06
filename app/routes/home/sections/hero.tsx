@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-screen h-screen -mx-4 md:-mx-8 lg:-mx-0 overflow-hidden mt-20">
+    <section className="relative w-screen h-screen md:-mx-8 lg:mx-0 overflow-hidden mt-15">
       {/* Background Image */}
       <img
         src="./assets/jamu-hero.jpg"
@@ -13,7 +13,7 @@ export default function HeroSection() {
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/50"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-black/50 via-black/40 to-black/50"></div>
 
       {/* Content */}
       <div className="relative w-full h-full flex flex-col items-center justify-center text-center px-4 md:px-8">
@@ -31,7 +31,7 @@ export default function HeroSection() {
         {/* CTA Button */}
         <Link
           to="/about"
-          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm hover:from-green-700 hover:to-green-800">
+          className="inline-flex items-center px-8 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm hover:from-green-700 hover:to-green-800">
           Learn More
           <Sparkles className="w-5 h-5 ms-2" />
         </Link>
