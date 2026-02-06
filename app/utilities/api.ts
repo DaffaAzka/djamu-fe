@@ -14,15 +14,13 @@ import type {
   AuthResponse,
   ApiResponse,
 } from "./type";
-import { data } from "react-router";
 
 // ========== AXIOS SETUP ==========
 const api: AxiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://api.jamu.pinat.my.id",
   headers: {
     "Content-Type": "application/json",
   },
-  // withCredentials: true,
 });
 
 // Request interceptor untuk tambah token
