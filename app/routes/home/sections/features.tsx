@@ -10,13 +10,13 @@ export default function FeaturesSection() {
   }, []);
 
   const features = [
-    { icon: Leaf, title: "100% Natural", desc: "Pure herbal ingredients" },
+    { icon: Leaf, title: "100% Asli", desc: "Bahan herbal asli" },
     {
       icon: Droplet,
-      title: "Authentic Recipe",
-      desc: "Traditional formulation",
+      title: "Resep Asli",
+      desc: "Formula tradisional",
     },
-    { icon: Heart, title: "Health Boosting", desc: "Wellness benefits" },
+    { icon: Heart, title: "Peningkatan Kesehatan", desc: "Manfaat kesejahteraan" },
   ];
 
   return (
@@ -42,21 +42,20 @@ export default function FeaturesSection() {
           <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 rounded-full backdrop-blur">
             <Sparkles className="w-4 h-4 text-[#f87108] animate-spin" />
             <span className="text-sm text-white font-semibold">
-              Discover Our Essence
+              Jelajahi Keajaiban Jamu
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-            Why Choose <span className="text-[#f87108]">Jamu?</span>
+            Kenapa Pilih <span className="text-[#f87108]">Jamu?</span>
           </h2>
 
           <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl drop-shadow leading-relaxed">
-            Jamu is a traditional Indonesian herbal medicine that has been used
-            for centuries to promote health and wellness. Made from natural
-            ingredients such as roots, leaves, flowers, and spices, Jamu offers
-            a holistic approach to healing and prevention. Our mission is to
-            preserve this rich cultural heritage while providing high-quality
-            Jamu products that cater to modern lifestyles.
+            Jamu adalah ramuan tradisional Indonesia yang telah digunakan selama
+            berabad-abad untuk mempromosikan kesehatan dan kesejahteraan. Dibuat
+            dari bahan alami seperti akar, daun, bunga, dan rempah-rempah, Jamu
+            menawarkan pendekatan holistik terhadap penyembuhan dan pencegahan
+            penyakit.
           </p>
 
           {/* Feature highlights */}
@@ -80,7 +79,7 @@ export default function FeaturesSection() {
             to="/about"
             className="inline-flex items-center px-8 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm hover:from-green-700 hover:to-green-800"
           >
-            Learn More
+           Pelajari Lebih Lanjut
             <Sparkles className="w-5 h-5 ms-2" />
           </Link>
         </div>

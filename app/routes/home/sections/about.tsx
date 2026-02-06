@@ -5,16 +5,16 @@ export default function AboutSection() {
     const [activeTab, setActiveTab] = useState("mission");
 
     const testimonials = [
-        { name: "Siti Rahman", role: "Health Enthusiast", text: "Jamu changed my life completely. I feel more energized and healthier than ever before!", rating: 5 },
-        { name: "Budi Santoso", role: "Wellness Coach", text: "The quality and authenticity of these products are unmatched. Highly recommended!", rating: 5 },
-        { name: "Dewi Lestari", role: "Yoga Instructor", text: "Perfect complement to my wellness routine. Natural and effective!", rating: 5 }
+        { name: "Siti Rahman", role: "Penggiat Kesehatan", text: "Jamu mengubah hidup saya sepenuhnya!, saya merasa menjadi lebih berenergi dan lebih sehat dari sebelumnya!", rating: 5 },
+        { name: "Budi Santoso", role: "Gym Coach", text: "Kualitas dan Rasanya sangat tidak tertandingi. Sangat rekomen!", rating: 5 },
+        { name: "Dewi Lestari", role: "Instruktur Yoga", text: "Minuman yang sangat cocok untuk membuat diriku menjadi lebih sehat!", rating: 5 }
     ];
 
     const timeline = [
-        { year: "1950s", event: "Traditional Jamu recipe documented and preserved" },
-        { year: "1980s", event: "First commercial production begins in Indonesia" },
-        { year: "2010s", event: "International expansion and modernization" },
-        { year: "2024", event: "Recognized as world leader in herbal wellness" }
+        { year: "1900", event: "Jamu mulai diproduksi sebagai minuman yang dijual Djamoe" },
+        { year: "1980", event: "Komersial pertama yang menjual Jamu" },
+        { year: "2010", event: "Menjual ke penjuru international" },
+        { year: "2026", event: "Dapat dijangkau hanya dengan mengunjungi Website Jamu!" }
     ];
 
     return (
@@ -155,7 +155,7 @@ export default function AboutSection() {
                 {/* Customer Testimonials */}
                 <div className="mb-16">
                     <h3 className="text-3xl font-bold font-poppins text-center text-gray-800 mb-12">
-                        What Our <span className="text-[#f87108]">Customers Say</span>
+                        Apa Kata <span className="text-[#f87108]">Pelanggan Kami</span>
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {testimonials.map((testimonial, index) => (
@@ -180,34 +180,34 @@ export default function AboutSection() {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center text-white">
                         <div>
                             <h4 className="text-4xl font-bold font-poppins mb-2">50K+</h4>
-                            <p className="text-lg">Happy Customers</p>
+                            <p className="text-lg">Pelanggan Senang</p>
                         </div>
                         <div>
                             <h4 className="text-4xl font-bold font-poppins mb-2">20+</h4>
-                            <p className="text-lg">Product Types</p>
+                            <p className="text-lg">Tipe Produk</p>
                         </div>
                         <div>
                             <h4 className="text-4xl font-bold font-poppins mb-2">15+</h4>
-                            <p className="text-lg">Countries Served</p>
+                            <p className="text-lg">Negara yang sudah dilayani</p>
                         </div>
                         <div>
                             <h4 className="text-4xl font-bold font-poppins mb-2">100%</h4>
-                            <p className="text-lg">Natural Ingredients</p>
+                            <p className="text-lg">Bahan Alami</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Call to Action */}
                 <div className="bg-white border-2 border-[#f87108] rounded-lg p-12 text-center">
-                    <h3 className="text-3xl font-bold font-poppins text-[#8B5A3C] mb-4">Experience the Jamu Difference</h3>
+                    <h3 className="text-3xl font-bold font-poppins text-[#8B5A3C] mb-4">Rasakan sensasi jamu dengan rasa yang enak dan juga sehat</h3>
                     <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Join our community of wellness enthusiasts and discover how traditional herbal medicine can transform your health journey.
+                        Bergabung kedalam komunitas kami yang berkembang dan rasakan manfaat dari Jamu tradisional hari ini. Apakah Anda siap memulai perjalanan menuju kesehatan alami dan kesejahteraan?
                     </p>
                     <Link
                         to="/about"
                         className="inline-flex items-center px-8 py-4 bg-[#f87108] text-white font-bold font-poppins rounded-lg hover:bg-orange-600 transition shadow-lg"
                     >
-                        Start Your Journey →
+                        Mulai Hidup Sehatmu →
                     </Link>
                 </div>
             </div>
