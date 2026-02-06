@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -9,6 +10,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import ButtonLink from "./components/ui/button-link";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -62,14 +64,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-3xl yusei font-bold text-red-500">{message}</h1>
+      <p className="text-lg text-gray-700">{details}</p>
+      <ButtonLink text="Kembali ke Beranda" link="/" />
     </main>
   );
 }

@@ -12,3 +12,13 @@ html,
 body {
   @apply bg-white;
 }
+
+@layer components {
+  .font-yusei {
+    font-family: "Yusei Magic", serif;
+  }
+
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+}
