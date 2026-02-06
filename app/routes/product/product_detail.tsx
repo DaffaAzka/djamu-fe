@@ -28,7 +28,6 @@ export default function ProductDetail({ params }: any) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Simulasi fetch data dengan delay
     const timer = setTimeout(() => {
       try {
         const productData = getProductById(parseInt(id));
@@ -41,7 +40,6 @@ export default function ProductDetail({ params }: any) {
 
         setProduct(productData);
 
-        // Get related products dari kategori yang sama
         const related = getProductsByCategory(productData.category_id)
           .filter((p) => p.id !== productData.id)
           .slice(0, 3);

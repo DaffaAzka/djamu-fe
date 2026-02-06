@@ -10,11 +10,9 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Products", path: "/products" },
-    { name: "Contact", path: "/contact" },
-    { name: "Galerry", path: "/carousel" }
+    { name: "Katalog", path: "/categories" },
+    { name: "Tentang Kami", path: "/about" },
+    { name: "Kontak", path: "/contact" },
   ];
 
   return (
