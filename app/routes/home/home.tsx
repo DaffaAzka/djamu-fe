@@ -3,6 +3,7 @@ import AboutSection from "./sections/about";
 import CarouselSection from "./sections/carousel";
 import FeaturesSection from "./sections/features";
 import HeroSection from "./sections/hero";
+import KeluhanSection from "./sections/keluhan";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <FeaturesSection/>
       <CarouselSection />
+       <KeluhanSection/>
     </>
   );
 }
