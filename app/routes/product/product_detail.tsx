@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import type { Route } from "../../+types/root";
 // import axios from "axios";
 
 interface DetailData {
@@ -16,8 +17,7 @@ export function meta({ params }: any) {
   ];
 }
 
-export default function DetailPage() {
-  const { id } = useParams<{ id: string }>();
+export default function ProductDetail({ params }: any) {
   const [data, setData] = useState<DetailData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -33,10 +33,10 @@ export default function DetailPage() {
 
         // Untuk testing, gunakan dummy data:
         setData({
-          id: id || "1",
-          title: `Detail Item ${id}`,
-          description: `Ini adalah halaman detail untuk item dengan ID: ${id}`,
-          image: `https://via.placeholder.com/400x300?text=Item+${id}`,
+          id: params.id || "1",
+          title: `Detail Item ${params.id}`,
+          description: `Ini adalah halaman detail untuk item dengan params.id: ${params.id}`,
+          image: `https://via.placeholder.com/400x300?text=Item+${params.id}`,
         });
       } catch (err) {
         setError("Gagal memuat data");
@@ -46,10 +46,10 @@ export default function DetailPage() {
       }
     };
 
-    if (id) {
+    if (params.id) {
       fetchDetailData();
     }
-  }, [id]); // Re-fetch jika id berubah
+  }, [params.id]); // Re-fetch jika id berubah
 
   if (loading) {
     return (
@@ -62,7 +62,9 @@ export default function DetailPage() {
   if (error || !data) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl text-red-500">{error || "Data tidak ditemukan"}</p>
+        <p className="text-xl text-red-500">
+          {error || "Data tidak ditemukan"}
+        </p>
       </div>
     );
   }
@@ -100,8 +102,7 @@ export default function DetailPage() {
             </button>
             <a
               href="/"
-              className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-6 rounded-lg transition"
-            >
+              className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-6 rounded-lg transition">
               Kembali
             </a>
           </div>
