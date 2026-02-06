@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Phone, Mail, MapPinHouse, Facebook, Instagram, Twitter,} from 'lucide-react';
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -43,22 +43,22 @@ const ContactSection = () => {
 
   const contactInfo = [
     {
-      icon: '📞',
-      title: 'Phone',
-      content: '(123) 456-7890',
-      description: 'Mon - Fri, 9AM - 6PM',
+      icon: <Phone className="inline mr-2 text-[#FF8C42]"/>,
+      title: 'Telepon',
+      content: '(021) 456-7890',
+      description: 'Senin - Jumat, 9.00 - 18.00 WIB',
     },
     {
-      icon: '📧',
+      icon: <Mail className="inline mr-2 text-[#FF8C42]"/>,
       title: 'Email',
-      content: 'info@jamu.com',
-      description: 'We reply within 24 hours',
+      content: 'Jamu!@Gmail.com',
+      description: 'Kami biasanya merespons dalam 24 jam',
     },
     {
-      icon: '📍',
-      title: 'Address',
-      content: '123 Jamu Street',
-      description: 'City, Country 12345',
+      icon: <MapPinHouse className="inline mr-2 text-[#FF8C42]"/>,
+      title: 'Alamat',
+      content: 'Jl. Jamu Sehat No.123, Tangerang',
+      description: 'Indonesia, Banten 15510',
     },
   ];
 
@@ -67,9 +67,9 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 ">Terhubung <span className="text-[#FF8C42]">Dengan Kami</span></h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Have questions about our traditional Jamu products? We'd love to hear from you. Drop us a message and we'll get back to you as soon as possible.
+            Punya pertanyaan atau butuh bantuan? Tim dukungan kami siap membantu Anda dengan segala kebutuhan terkait produk Jamu kami.
           </p>
         </div>
 
@@ -92,13 +92,13 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Form */}
           <div className="bg-[#2D1C0F] p-8 md:p-12 rounded-2xl shadow-xl">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Send us a Message</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Kirim Pesan Kepada Kami</h3>
 
             {submitted && (
               <div className="mb-6 p-4 bg-green-50 border border-green-300 rounded-lg">
                 <p className="text-green-700 font-semibold flex items-center">
                   <span className="text-xl mr-2">✓</span>
-                  Thank you! We'll be in touch soon.
+                  Terima kasih! Kami akan segera menghubungi Anda.
                 </p>
               </div>
             )}
@@ -107,7 +107,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-white text-sm font-semibold mb-2">
-                    Full Name *
+                    Nama Lengkap *
                   </label>
                   <input
                     type="text"
@@ -122,7 +122,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-white text-sm font-semibold mb-2">
-                    Email Address *
+                    Alamat Email *
                   </label>
                   <input
                     type="email"
@@ -140,7 +140,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block text-white text-sm font-semibold mb-2">
-                    Phone Number
+                    Nomor Telepon
                   </label>
                   <input
                     type="tel"
@@ -154,7 +154,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-white text-sm font-semibold mb-2">
-                    Subject *
+                    Subjek *
                   </label>
                   <select
                     id="subject"
@@ -164,39 +164,39 @@ const ContactSection = () => {
                     required
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#f87108] focus:bg-white/5 transition"
                   >
-                    <option value="" className="bg-[#2D1C0F]">
-                      Select a subject
+                    <option value="subjek" className="bg-[#2D1C0F]">
+                      Pilih Subjek
                     </option>
-                    <option value="product" className="bg-[#2D1C0F]">
-                      Product Inquiry
+                    <option value="produk" className="bg-[#2D1C0F]">
+                      Produk Inquiry
                     </option>
-                    <option value="order" className="bg-[#2D1C0F]">
-                      Order Support
+                    <option value="pesanan" className="bg-[#2D1C0F]">
+                      Bantuan Pesanan
                     </option>
-                    <option value="feedback" className="bg-[#2D1C0F]">
-                      Feedback
+                    <option value="umpanbalik" className="bg-[#2D1C0F]">
+                        Umpan Balik
                     </option>
-                    <option value="partnership" className="bg-[#2D1C0F]">
-                      Partnership
+                    <option value="mitra" className="bg-[#2D1C0F]">
+                        Kesempatan Kemitraan
                     </option>
-                    <option value="other" className="bg-[#2D1C0F]">
-                      Other
+                    <option value="lainnya" className="bg-[#2D1C0F]">
+                      Lainnya
                     </option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white text-sm font-semibold mb-2">
-                  Message *
+                <label htmlFor="pesan" className="block text-white text-sm font-semibold mb-2">
+                  Pesan *
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
+                  id="pesan"
+                  name="pesan"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder="Tulis pesan Anda di sini..."
                   rows={5}
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-[#f87108] focus:bg-white/5 transition resize-none"
                 />
@@ -207,7 +207,7 @@ const ContactSection = () => {
                 disabled={loading}
                 className="w-full py-3 bg-gradient-to-r from-[#f87108] to-[#ff9d4a] text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-[#f87108]/50 disabled:opacity-50 transition-all duration-300"
               >
-                {loading ? 'Sending...' : 'Send Message'}
+                {loading ? 'Mengirim...' : 'Kirim Pesan'}
               </button>
             </form>
           </div>
@@ -216,46 +216,46 @@ const ContactSection = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-[#2D1C0F] mb-4">
-                We're Here to Help
+               Kami Disini Untuk Membantu Anda
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Whether you have questions about our products, need assistance with an order, or want to discuss a partnership opportunity, our team is ready to assist you.
+                Apakah Anda memiliki pertanyaan tentang produk Jamu kami, butuh bantuan dengan pesanan Anda, atau ingin memberikan umpan balik? Jangan ragu untuk menghubungi kami melalui formulir di sebelah kiri atau menggunakan informasi kontak di bawah ini. Tim dukungan pelanggan kami berdedikasi untuk memberikan layanan terbaik dan memastikan pengalaman Anda dengan Jamu kami menyenangkan dan memuaskan.
               </p>
             </div>
 
             {/* Business Hours */}
             <div className="bg-[#FFF5F0] p-6 rounded-xl border-l-4 border-[#f87108]">
-              <h4 className="text-lg font-bold text-[#2D1C0F] mb-3">Business Hours</h4>
+              <h4 className="text-lg font-bold text-[#2D1C0F] mb-3">Waktu Operasional</h4>
               <div className="space-y-2 text-gray-700">
                 <p>
-                  <span className="font-semibold">Monday - Friday:</span> 9:00 AM - 6:00 PM
+                  <span className="font-semibold">Senin - Jumat:</span> 9:00 - 6:00 WIB
                 </p>
                 <p>
-                  <span className="font-semibold">Saturday:</span> 10:00 AM - 4:00 PM
+                  <span className="font-semibold">Sabtu:</span> 10:00 - 4:00 WIB
                 </p>
                 <p>
-                  <span className="font-semibold">Sunday:</span> Closed
+                  <span className="font-semibold">Minggu:</span> Tutup
                 </p>
               </div>
             </div>
 
             {/* Response Time */}
             <div className="bg-[#FFF5F0] p-6 rounded-xl border-l-4 border-[#f87108]">
-              <h4 className="text-lg font-bold text-[#2D1C0F] mb-3">Response Time</h4>
+              <h4 className="text-lg font-bold text-[#2D1C0F] mb-3">Waktu Respon</h4>
               <p className="text-gray-700">
-                We typically respond to all inquiries within <span className="font-semibold">24 hours</span>. For urgent matters, please call us directly.
+                Kami biasanya merespons semua pertanyaan dalam waktu <span className="font-semibold">24 jam</span>. Untuk masalah mendesak, silakan hubungi kami secara langsung.
               </p>
             </div>
 
             {/* Social Media */}
             <div>
-              <h4 className="text-lg font-bold text-[#2D1C0F] mb-4">Connect With Us</h4>
+              <h4 className="text-lg font-bold text-[#2D1C0F] mb-4">Terhubung dengan Kami</h4>
               <div className="flex space-x-4">
                 {[
-                  { icon: '📘', name: 'Facebook', url: 'https://facebook.com' },
-                  { icon: '📷', name: 'Instagram', url: 'https://instagram.com' },
-                  { icon: '𝕏', name: 'Twitter', url: 'https://twitter.com' },
-                  { icon: '💬', name: 'WhatsApp', url: 'https://wa.me/1234567890' },
+                  { icon: <Facebook className="inline  text-[#FF8C42]"/>, name: 'Facebook', url: 'https://facebook.com' },
+                  { icon: <Instagram className="inline text-[#FF8C42]"/>, name: 'Instagram', url: 'https://instagram.com' },
+                  { icon: <Twitter className="inline  text-[#FF8C42]"/>, name: 'Twitter', url: 'https://twitter.com' },
+                  { icon: <Phone className="inline  text-[#FF8C42]"/>, name: 'WhatsApp', url: 'https://wa.me/1234567890' },
                 ].map((social) => (
                   <a
                     key={social.name}

@@ -46,7 +46,7 @@ export default function AboutSection() {
 
                     {/* Right Side - Description */}
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-bold font-poppins text-[#8B5A3C] mb-6">
+                        <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6">
                             Tentang <span className="text-[#f87108]">Jamu</span> 
                         </h2>
                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -75,7 +75,7 @@ export default function AboutSection() {
                                     : "text-gray-600 hover:text-[#f87108]"
                             }`}
                         >
-                            Our Mission
+                            Misi Kami
                         </button>
                         <button
                             onClick={() => setActiveTab("vision")}
