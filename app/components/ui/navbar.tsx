@@ -7,14 +7,14 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
+  };  
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "#about" },
-    { name: "Products", path: "/products" },
-    { name: "Contact", path: "/contact" },
-    { name: "Galerry", path: "/carousel" }
+    { name: "Beranda", path: "/" },
+    { name: "Tentang Kami", path: "#about" },
+    { name: "Katalog", path: "/products" },
+    { name: "Kontak", path: "/contact" },
+    { name: "Galeri", path: "/carousel" }
   ];
 
   return (
