@@ -7,7 +7,7 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
+  };  
 
   const navLinks = [
     { name: "Katalog", path: "/categories" },

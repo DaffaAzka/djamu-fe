@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { Sparkles, Leaf, Droplet, Heart } from "lucide-react";
+import { Sparkles, Leaf, Droplet, HeartPlus } from "lucide-react";
 
 export default function FeaturesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +16,7 @@ export default function FeaturesSection() {
       title: "Resep Asli",
       desc: "Formula tradisional",
     },
-    { icon: Heart, title: "Peningkatan Kesehatan", desc: "Manfaat kesejahteraan" },
+    { icon: HeartPlus, title: "Peningkatan Kesehatan", desc: "Manfaat kesejahteraan" },
   ];
 
   return (
