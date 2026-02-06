@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import AboutSection from "./sections/about";
 import CarouselSection from "./sections/carousel";
 import HeroSection from "./sections/hero";
 
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <AboutSection />
       <CarouselSection />
     </>
   );

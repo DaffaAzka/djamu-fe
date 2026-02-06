@@ -12,6 +12,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Products", path: "/products" },
+    { name: "Contact", path: "/contact" },
+    { name: "Galerry", path: "/carousel" }
   ];
 
   return (
@@ -21,7 +24,7 @@ export default function Navbar() {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-900">
-            <img src="./assets/jamu-logo.png" className="h-10" />
+            <img src="./assets/jamu-logo.png" className="h-15" />
           </span>
         </Link>
         <button
