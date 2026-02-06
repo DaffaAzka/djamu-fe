@@ -12,4 +12,14 @@ export default [
     route("/categories/:categoryId/products", "./routes/product/products.tsx"),
     route("/products/:id", "./routes/product/product_detail.tsx"),
   ]),
+
+  // Admin Routes
+  layout("./components/layouts/admin_layout.tsx", [
+    route("/admin", "./routes/admin/dashboard.tsx"),
+    route("/admin/categories", "./routes/admin/categories.tsx"),
+    route("/admin/products", "./routes/admin/products.tsx"),
+  ]),
+
+  // Auth Routes (no layout)
+  route("/admin/login", "./routes/admin/login.tsx"),
 ] satisfies RouteConfig;
