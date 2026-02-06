@@ -11,6 +11,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Katalog", path: "/categories" },
+    { name: "Galeri", path: "/gallery" },
     { name: "Tentang Kami", path: "/about" },
     { name: "Kontak", path: "/contact" },
   ];

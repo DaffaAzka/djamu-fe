@@ -9,6 +9,9 @@ export default [
   layout("./components/layouts/guest_layout.tsx", [
     index("./routes/home/home.tsx"),
     route("/categories", "./routes/categories/categories.tsx"),
+    route("/about", "./routes/home/sections/about.tsx"),
+    route("/contact", "./routes/home/sections/contact.tsx"),
+    route("/gallery", "./routes/home/sections/carousel.tsx"),
     route("/categories/:categoryId/products", "./routes/product/products.tsx"),
     route("/products/:id", "./routes/product/product_detail.tsx"),
   ]),

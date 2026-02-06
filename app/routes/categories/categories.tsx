@@ -44,7 +44,7 @@ export default function CategoriesPage() {
               title={jamu.name}
               description={jamu.description}
               key={jamu.id}
-              image={jamu.picture_url}
+              image={jamu.picture_url || '/assets/jamu-assets3.jpg'}
               className="group-hover:shadow-xl transition-all duration-300 cursor-pointer">
               <ButtonLink
                 text="Lihat Produk"
