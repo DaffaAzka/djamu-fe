@@ -74,16 +74,16 @@ export default function ProductsByCategory({ params }: any) {
         </div>
       : <>
           {products.length > 0 ?
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 grow">
               {products.map((product) => (
                 <Link
                   key={product.id}
                   to={`/products/${product.id}`}
-                  className="group">
+                  className="group grow">
                   <Card
                     title={product.title}
                     image={product.picture_url}
-                    className="group-hover:shadow-xl transition-all duration-300 cursor-pointer">
+                    className="group-hover:shadow-xl transition-all duration-300 cursor-pointer ">
                     {product.is_popular === 1 && (
                       <div className="inline-block px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full mb-2">
                         Popular

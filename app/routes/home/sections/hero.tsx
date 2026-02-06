@@ -19,20 +19,19 @@ export default function HeroSection() {
       <div className="relative w-full h-full flex flex-col items-center justify-center text-center px-4 md:px-8">
         {/* Title */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 animate-fade-in font-yusei">
-          Jamu - Embrace Tradition, Embrace Wellness
+          Jamu - Minuman Lokal
         </h1>
 
         {/* Description */}
         <p className="text-lg md:text-xl lg:text-2xl text-gray-100 mb-8 md:mb-10 max-w-2xl animate-fade-in-delayed">
-          Discover the natural way to wellness with our traditional herbal
-          remedies.
+          Membantu meringankan berbagai keluhan seperti pusing, masuk angin, dan pegal-pegal.
         </p>
 
         {/* CTA Button */}
         <Link
-          to="/about"
+          to="/categories"
           className="inline-flex items-center px-8 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm hover:from-green-700 hover:to-green-800">
-          Learn More
+          Lihat Katalog
           <Sparkles className="w-5 h-5 ms-2" />
         </Link>
 
