@@ -14,10 +14,11 @@ import type {
   AuthResponse,
   ApiResponse,
 } from "./type";
+import { data } from "react-router";
 
 // ========== AXIOS SETUP ==========
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:8000/api",
+  baseURL: "http://localhost:8000/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -49,7 +50,7 @@ api.interceptors.response.use(
       if (error.response?.status === 401) {
         localStorage.removeItem("auth_token");
         localStorage.removeItem("user");
-        window.location.href = "/admin/login";
+        window.location.href = "/login";
       }
     }
     return Promise.reject(error);

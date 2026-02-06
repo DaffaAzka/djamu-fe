@@ -24,7 +24,7 @@ export default function AdminProducts() {
   useEffect(() => {
     // Check authentication
     if (!localStorage.getItem("auth_token")) {
-      navigate("/admin/login");
+      navigate("/login");
       return;
     }
 
@@ -133,7 +133,7 @@ export default function AdminProducts() {
   };
 
   if (!localStorage.getItem("auth_token")) {
-    navigate("/admin/login");
+    navigate("/login");
     return null;
   }
 

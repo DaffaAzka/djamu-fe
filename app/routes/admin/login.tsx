@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Eye, EyeOff } from "lucide-react";
+import { authAPI } from "~/utilities/api";
 
 export default function AdminLogin() {
   const [credentials, setCredentials] = useState({
-    name: "",
+    email: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
@@ -23,30 +24,38 @@ export default function AdminLogin() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    if (!credentials.name.trim() || !credentials.password.trim()) {
-      setError("Username dan password harus diisi!");
-      return;
-    }
+    const { email, password } = credentials;
 
-    // Dummy login - accept any credentials
-    const user = {
-      id: 1,
-      name: credentials.name,
-      email: `${credentials.name}@jamu.local`,
-      role: "admin",
+    const fetchLogin = async () => {
+      await authAPI.login({ email, password }).then((data) => {
+        if (data) {
+          localStorage.setItem("auth_token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+        }
+      });
     };
 
-    // Save to localStorage
-    localStorage.setItem("auth_token", "dummy_token_" + Date.now());
-    localStorage.setItem("user", JSON.stringify(user));
+    fetchLogin()
+      .then((data) => {
+        setLoading(false);
+        console.log(data);
+        // navigate("/admin");
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(
+          err.response?.data?.message ||
+            "Gagal melakukan login. Silakan coba lagi.",
+        );
+      });
 
-    // Redirect ke dashboard
-    navigate("/admin");
+    // navigate("/admin");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#2D1C0F] to-[#1a0f06] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-[#2D1C0F] to-[#1a0f06] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -68,14 +77,14 @@ export default function AdminLogin() {
             {/* Name/Username Input */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Username
+                Email
               </label>
               <input
                 type="text"
-                name="name"
-                value={credentials.name}
+                name="email"
+                value={credentials.email}
                 onChange={handleChange}
-                placeholder="Masukkan username"
+                placeholder="Masukkan email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f87108] transition"
                 required
               />
@@ -114,27 +123,7 @@ export default function AdminLogin() {
               Login
             </button>
           </form>
-
-          {/* Demo Credentials */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-600 mb-3 font-semibold">
-              Demo Credentials:
-            </p>
-            <div className="space-y-2 text-xs text-gray-600">
-              <p>
-                <span className="font-semibold">Username:</span> admin
-              </p>
-              <p>
-                <span className="font-semibold">Password:</span> password123
-              </p>
-            </div>
-          </div>
         </div>
-
-        {/* Footer */}
-        <p className="text-center text-gray-400 text-sm mt-6">
-          Backend belum deployed, menggunakan dummy data untuk testing
-        </p>
       </div>
     </div>
   );

@@ -4,29 +4,24 @@ import Card from "../../components/ui/card";
 import { dummyJamu, getJamuAll } from "../../utilities/dummy";
 import { Loader } from "lucide-react";
 import Loading from "~/components/ui/loading";
-
-interface Jamu {
-  id: number;
-  name: string;
-  description: string;
-  picture_url: string;
-  created_at: string;
-  updated_at: string;
-}
+import { categoryAPI } from "~/utilities/api";
+import type { Category } from "~/utilities/type";
+import ButtonLink from "~/components/ui/button-link";
 
 export default function CategoriesPage() {
-  const [jamuList, setJamuList] = useState<Jamu[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulasi fetch data dengan delay
-    const timer = setTimeout(() => {
-      const data = getJamuAll();
-      setJamuList(data);
-      setIsLoading(false);
-    }, 500);
+    const fetchJamu = async () => {
+      const data = await categoryAPI.getAll();
+      return data;
+    };
 
-    return () => clearTimeout(timer);
+    fetchJamu().then((data) => {
+      setCategories(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -44,23 +39,23 @@ export default function CategoriesPage() {
       {isLoading ?
         <Loading text="Memuat Katalog" />
       : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {jamuList.map((jamu) => (
-            <Link
+          {categories.map((jamu) => (
+            <Card
+              title={jamu.name}
+              description={jamu.description}
               key={jamu.id}
-              to={`/categories/${jamu.id}/products`}
-              className="group">
-              <Card
-                title={jamu.name}
-                description={jamu.description}
-                image={jamu.picture_url}
-                className="group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+              image={jamu.picture_url}
+              className="group-hover:shadow-xl transition-all duration-300 cursor-pointer">
+              <ButtonLink
+                text="Lihat Produk"
+                link={`/categories/${jamu.id}/products`}
               />
-            </Link>
+            </Card>
           ))}
         </div>
       }
 
-      {!isLoading && jamuList.length === 0 && (
+      {!isLoading && categories.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">
             Tidak ada data kategori jamu yang tersedia

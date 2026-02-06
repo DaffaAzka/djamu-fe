@@ -21,5 +21,5 @@ export default [
   ]),
 
   // Auth Routes (no layout)
-  route("/admin/login", "./routes/admin/login.tsx"),
+  route("/login", "./routes/admin/login.tsx"),
 ] satisfies RouteConfig;

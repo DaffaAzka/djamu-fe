@@ -16,7 +16,7 @@ export default function AdminDashboard() {
     // Check authentication
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
-      navigate("/admin/login");
+      navigate("/login");
       return;
     }
     setUser(JSON.parse(storedUser));
