@@ -17,7 +17,7 @@ import type {
 
 // ========== AXIOS SETUP ==========
 const api: AxiosInstance = axios.create({
-  baseURL: "https://api.jamu.pinat.my.id",
+  baseURL: "https://api.jamu.pinat.my.id/api",
   headers: {
     "Content-Type": "application/json",
   },
