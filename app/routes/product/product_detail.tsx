@@ -145,9 +145,11 @@ export default function ProductDetail({ params }: any) {
 
               {/* CTA Buttons */}
               <div className="flex gap-4">
-                <button className="flex-1 bg-[#2D1C0F] text-white font-semibold py-3 px-6 rounded-lg transition">
-                  Hubungi Kami
-                </button>
+                <Link to={`https://wa.me/6285781818605`}>
+                  <button className="flex-1 bg-[#2D1C0F] text-white font-semibold py-3 px-6 rounded-lg transition">
+                    Hubungi Kami
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
