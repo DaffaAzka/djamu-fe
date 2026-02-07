@@ -1,31 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 // import { Button } from "~/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-
-  // particles init
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine);
-  }, []);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-  }, []);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <section
@@ -42,30 +22,6 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-[#f87108]" />
       </div>
-
-      {/* Particles Layer */}
-      <Particles
-        id="tsparticles-hero"
-        className="absolute inset-0 z-10"
-        options={{
-          background: { color: { value: "transparent" } },
-          fpsLimit: 120,
-          particles: {
-            color: { value: ["#D97706", "#FF8C42", "#ffffff"] },
-            move: {
-              enable: true,
-              speed: 1,
-              direction: "top",
-              outModes: { default: "out" },
-            },
-            number: { value: 50 },
-            opacity: { value: 0.3 },
-            shape: { type: "circle" },
-            size: { value: 4 },
-          },
-          detectRetina: true,
-        }}
-      />
       {/* Content */}
       <div
         className={`relative z-10 text-white max-w-3xl transition-all duration-1000 ${
