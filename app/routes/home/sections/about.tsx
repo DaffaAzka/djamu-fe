@@ -56,7 +56,7 @@ export default function AboutSection() {
                             komitmen kami adalah untuk melestarikan warisan budaya yang kaya ini sambil menyediakan produk Jamu berkualitas tinggi yang sesuai dengan gaya hidup modern.
                         </p>
                         <Link
-                            to="/products"
+                            to="/categories"
                             className="inline-flex items-center px-8 py-4 bg-[#f87108] text-white font-bold font-poppins rounded-lg hover:bg-orange-600 transition shadow-lg"
                         >
                             Jelajahi Produk kami →
